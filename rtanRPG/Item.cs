@@ -51,7 +51,7 @@ namespace rtanRPG
 
         public string type { get { return "atk"; } }
         bool _isSoltout = false;
-        public string isSoltout
+        public string isSoldout
         {
             get
             {
@@ -103,17 +103,24 @@ namespace rtanRPG
         {
             return $" {name,-15}| 방어력 +{(int) ability,-15}| {description,-15}|";
         }
-        bool _isSoltout = false;
-        public string isSoltout 
+
+
+        bool _isSoldout = false;
+        public bool IsSoldout
+        {
+            get { return _isSoldout; }
+            set { _isSoldout = value; }
+        }
+        public string isSoldout 
         { 
             get 
             {
-                if (_isSoltout) return "구매완료";
+                if (_isSoldout) return "구매완료";
                 else return ((int)price).ToString();
             }
             set
             {
-                _isSoltout = bool.Parse(value);
+                _isSoldout = bool.Parse(value);
             }
         }
     }
@@ -126,7 +133,9 @@ namespace rtanRPG
         public float price { get; set; }
         public bool alreadyHave { get; set; }
         public string type { get; }
-        public string isSoltout { get; set; }
+
+    
+        public string isSoldout { get; set; }
 
         public string Label();
         

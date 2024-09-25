@@ -142,6 +142,7 @@ namespace rtanRPG
                     else
                     {
                         player.inventory.AddItem(items[inputIDX]);
+                        items[inputIDX].isSoldout = "true";
                         player.gold -= items[inputIDX].price;
                         Console.WriteLine("구매를 완료했습니다.");
                         break;
@@ -181,6 +182,7 @@ namespace rtanRPG
 
             
                     player.gold += player.inventory.items[inputIDX].price * discount;
+                    player.inventory.items[inputIDX].isSoldout = "false";
                     player.inventory.RemoveItem(player.inventory.items[inputIDX]);
                     Console.WriteLine("판매를 완료했습니다.");
                     break;
@@ -198,7 +200,7 @@ namespace rtanRPG
             for (int i = 0; i < items.Length; i++)
             {
                 
-                    itemsInven += "-" + items[i].Label() + $"{items[i].isSoltout}" + "\r\n";
+                    itemsInven += "-" + items[i].Label() + $"{items[i].isSoldout}" + "\r\n";
                 
 
 
@@ -214,7 +216,7 @@ namespace rtanRPG
             for (int i = 0; i < items.Length; i++)
             {
                 
-                    itemsInvenWithIdx += $"- {i + 1}" + items[i].Label() + $" {items[i].isSoltout}" + "\r\n";
+                    itemsInvenWithIdx += $"- {i + 1}" + items[i].Label() + $" {items[i].isSoldout}" + "\r\n";
                
 
 
